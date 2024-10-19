@@ -6,7 +6,7 @@ class LZ77:
         self.window_size = window_size
         self.lookahead_buffer_size = lookahead_buffer_size
 
-    def compress(self, data):
+    def compress(self, data: iter):
         i = 0
         output = bytearray()
 
