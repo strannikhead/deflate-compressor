@@ -42,7 +42,7 @@ class LZ77:
 
             decompressed_data.append(symbol)
 
-        return bytes(decompressed_data)
+        return bytes(decompressed_data)[:-1]
 
     def _find_longest_match(self, data, current_position):
         end_of_buffer = min(current_position + self.lookahead_buffer_size, len(data))
@@ -66,3 +66,13 @@ class LZ77:
             return best_match_distance, best_match_length
         else:
             return None
+
+
+if __name__ == '__main__':
+    a = LZ77()
+    with open('test.txt', 'rb') as f:
+        data = f.read()
+    compressed_data = a.compress(data)
+    uncompressed_data = a.decompress(compressed_data)
+    print(data[:10], data[-10:])
+    print(uncompressed_data[:10], uncompressed_data[-10:])

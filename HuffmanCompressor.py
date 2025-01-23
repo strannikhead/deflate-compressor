@@ -2,7 +2,6 @@ import heapq
 from collections import defaultdict
 import pickle
 
-
 class Node:
     def __init__(self, frequency, byte=None, left=None, right=None):
         self.frequency = frequency
